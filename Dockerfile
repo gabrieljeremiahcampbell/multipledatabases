@@ -4,7 +4,7 @@ COPY pom.xml /tmp/
 COPY src /tmp/src/
 COPY .git /tmp/.git/
 WORKDIR /tmp/
-RUN mvn -Ptest clean install package
+RUN mvn -Pdev clean install package
 
 FROM openjdk:8-jdk-alpine
 COPY --from=BUILD_IMAGE /tmp/target/multipledatabasespring*.jar ./multipledatabasespring.jar
