@@ -3,7 +3,6 @@ RUN rm -r /tmp/
 COPY pom.xml /tmp/
 COPY src /tmp/src/
 COPY .git /tmp/.git/
-COPY .mvn /tmp/.mvn/
 WORKDIR /tmp/
 RUN mvn -Ptest clean install package
 
