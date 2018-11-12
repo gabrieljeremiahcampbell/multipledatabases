@@ -12,3 +12,4 @@ ENTRYPOINT ["/usr/bin/java"]
 CMD ["-jar", "/opt/multipledatabasespring/lib/multipledatabasespring.jar"]
 VOLUME /var/lib/multipledatabasespring/config-repo
 EXPOSE 8080
+HEALTHCHECK --interval=1m --timeout=3s CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
