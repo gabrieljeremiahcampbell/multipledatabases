@@ -36,11 +36,10 @@ public class MultipleDatabaseController {
         return new Person();
     }
 
-    @LogExecutionTime
+    @LogExecutionDetails
     @RequestMapping(value = "newperson" , method = RequestMethod.POST, consumes="application/json")
     public Person savePerson(@RequestBody Person person) {
 
-        logger.info("Hi");
         return savePersonPersistent(savePersonInMemory(person));
     }
 
