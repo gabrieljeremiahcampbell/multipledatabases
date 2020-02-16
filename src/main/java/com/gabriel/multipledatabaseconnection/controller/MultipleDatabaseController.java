@@ -1,5 +1,7 @@
 package com.gabriel.multipledatabaseconnection.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gabriel.logging.LogExecutionDetails;
 import com.gabriel.logging.LogExecutionTime;
 import com.gabriel.multipledatabaseconnection.model.Person;
@@ -38,8 +40,10 @@ public class MultipleDatabaseController {
 
     @LogExecutionDetails
     @RequestMapping(value = "newperson" , method = RequestMethod.POST, consumes="application/json")
-    public Person savePerson(@RequestBody Person person) {
+    public Person savePerson(@RequestBody Person person) throws JsonProcessingException {
 
+        ObjectMapper mapper = new ObjectMapper();
+        logger.info(mapper.writeValueAsString(person));
         return savePersonPersistent(savePersonInMemory(person));
     }
 
